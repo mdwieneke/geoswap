@@ -1,4 +1,44 @@
 Geoswap::Application.routes.draw do
+
+
+# resources are
+#	a)	/my/recent_check_ins
+#	b)	/user/1/recent_check_ins
+#	c)	/locations/1
+#	d)	/locations/1/check_ins
+#	e)	/locations/nearby
+
+
+
+match '/my/recent_check_ins'    #a
+match '/my/locations'			#c
+match '/my/near_by'				#e
+
+
+resources :users do
+	member do
+		get 'recent_check_ins'	#b
+	end
+end
+
+#resources :locations do
+#	member do
+#		get 'check_ins'			#d
+#	end
+#end
+
+resources :locations do
+	collection do
+		get 'near_by'			#d
+	end
+	resources :check_ins			#e
+end
+
+
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
