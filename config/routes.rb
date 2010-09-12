@@ -9,6 +9,8 @@ Geoswap::Application.routes.draw do
 #	e)	/locations/nearby
 
 
+#  In the terminal....   rails generate model Location
+
 
 match '/my/recent_check_ins'    #a
 match '/my/locations'			#c
